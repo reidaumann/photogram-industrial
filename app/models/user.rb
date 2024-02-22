@@ -27,5 +27,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   
+  #assocation for photos
   has_many :own_photos, class_name: "Photo", foreign_key: "owner_id"
+
+  #association for comments
+  has_many :comments, foreign_key: "author_id"
 end
