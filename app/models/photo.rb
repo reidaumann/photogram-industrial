@@ -26,6 +26,11 @@ class Photo < ApplicationRecord
 
   has_many :fans, through: :likes
 
+  #validation
   validates :caption, presence: true
   validates :image, presence: true
+
+  #scoping
+  scope :past_week, -> { where(created_at: 1.week.ago...) }
+  scope :by_likes, -> { order(likes_count: :desc) }
 end
