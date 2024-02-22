@@ -33,4 +33,14 @@ class User < ApplicationRecord
 
   #association for comments
   has_many :comments, foreign_key: "author_id"
+
+  #associations for follow_requests
+  has_many :sent_follow_requests, foreign_key: :sender_id, class_name: "FollowRequest"
+  has_many :received_follow_requests, foreign_key: :recipient_id, class_name: "FollowRequest"
+
+  #association for likes
+  has_many :likes, foreign_key: :fan_id
+
+  #associations for photos
+  has_many :own_photos, foreign_key: :owner_id, class_name: "Photo"
 end
