@@ -3,6 +3,7 @@
     <h1>
       <%= @user.username %>
     </h1>
+
     <ul class="nav nav-pills nav-justified">
       <li class="nav-item">
         <%= link_to "Posts", user_path(@user.username), class: "nav-link" %>
@@ -23,6 +24,6 @@
   </div>
 </div>
 
-<% @user.liked_photos.each do |photo| %>
+<% @user.feed.each do |photo| %>
   <%= render "photos/photo", photo: photo %>
 <% end %>
